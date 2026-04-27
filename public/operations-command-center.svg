@@ -1,0 +1,59 @@
+<svg width="1080" height="760" viewBox="0 0 1080 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Operations command center dashboard</title>
+  <desc id="desc">A futuristic dashboard showing inbox, calendar, SOP, and follow-up workflows.</desc>
+  <rect width="1080" height="760" rx="20" fill="#0B0F18"/>
+  <path d="M64 88H1016" stroke="#67E8F9" stroke-opacity=".18"/>
+  <path d="M64 160H1016" stroke="#FFFFFF" stroke-opacity=".08"/>
+  <path d="M64 232H1016" stroke="#FFFFFF" stroke-opacity=".08"/>
+  <path d="M64 304H1016" stroke="#FFFFFF" stroke-opacity=".08"/>
+  <path d="M64 376H1016" stroke="#FFFFFF" stroke-opacity=".08"/>
+  <path d="M64 448H1016" stroke="#FFFFFF" stroke-opacity=".08"/>
+  <path d="M64 520H1016" stroke="#FFFFFF" stroke-opacity=".08"/>
+  <path d="M64 592H1016" stroke="#FFFFFF" stroke-opacity=".08"/>
+  <path d="M64 664H1016" stroke="#FACC15" stroke-opacity=".14"/>
+  <path d="M168 72V696" stroke="#FFFFFF" stroke-opacity=".06"/>
+  <path d="M304 72V696" stroke="#FFFFFF" stroke-opacity=".06"/>
+  <path d="M440 72V696" stroke="#FFFFFF" stroke-opacity=".06"/>
+  <path d="M576 72V696" stroke="#FFFFFF" stroke-opacity=".06"/>
+  <path d="M712 72V696" stroke="#FFFFFF" stroke-opacity=".06"/>
+  <path d="M848 72V696" stroke="#FFFFFF" stroke-opacity=".06"/>
+  <rect x="74" y="102" width="328" height="190" rx="10" fill="#121826" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <rect x="426" y="102" width="250" height="190" rx="10" fill="#121826" stroke="#67E8F9" stroke-opacity=".24"/>
+  <rect x="700" y="102" width="306" height="190" rx="10" fill="#121826" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <rect x="74" y="324" width="458" height="154" rx="10" fill="#121826" stroke="#FACC15" stroke-opacity=".22"/>
+  <rect x="556" y="324" width="450" height="154" rx="10" fill="#121826" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <rect x="74" y="510" width="284" height="144" rx="10" fill="#121826" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <rect x="382" y="510" width="284" height="144" rx="10" fill="#121826" stroke="#FFFFFF" stroke-opacity=".12"/>
+  <rect x="690" y="510" width="316" height="144" rx="10" fill="#121826" stroke="#67E8F9" stroke-opacity=".2"/>
+  <text x="98" y="142" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="24" font-weight="700">Inbox queue</text>
+  <text x="450" y="142" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="24" font-weight="700">Calendar shield</text>
+  <text x="724" y="142" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="24" font-weight="700">Client pulse</text>
+  <text x="98" y="364" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="24" font-weight="700">SOP pipeline</text>
+  <text x="580" y="364" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="24" font-weight="700">Follow-up cadence</text>
+  <text x="98" y="550" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="22" font-weight="700">Docs</text>
+  <text x="406" y="550" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="22" font-weight="700">Tasks</text>
+  <text x="714" y="550" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="22" font-weight="700">Weekly view</text>
+  <rect x="98" y="170" width="258" height="14" rx="7" fill="#FFFFFF" fill-opacity=".12"/>
+  <rect x="98" y="200" width="214" height="14" rx="7" fill="#67E8F9" fill-opacity=".42"/>
+  <rect x="98" y="230" width="286" height="14" rx="7" fill="#FFFFFF" fill-opacity=".1"/>
+  <rect x="450" y="170" width="182" height="14" rx="7" fill="#FACC15" fill-opacity=".48"/>
+  <rect x="450" y="200" width="144" height="14" rx="7" fill="#FFFFFF" fill-opacity=".12"/>
+  <rect x="450" y="230" width="198" height="14" rx="7" fill="#67E8F9" fill-opacity=".38"/>
+  <circle cx="755" cy="202" r="54" stroke="#67E8F9" stroke-opacity=".42" stroke-width="10"/>
+  <path d="M755 148A54 54 0 0 1 809 202" stroke="#FACC15" stroke-width="10" stroke-linecap="round"/>
+  <rect x="842" y="164" width="116" height="16" rx="8" fill="#FFFFFF" fill-opacity=".12"/>
+  <rect x="842" y="198" width="86" height="16" rx="8" fill="#67E8F9" fill-opacity=".38"/>
+  <rect x="842" y="232" width="128" height="16" rx="8" fill="#FFFFFF" fill-opacity=".1"/>
+  <rect x="98" y="396" width="386" height="14" rx="7" fill="#FACC15" fill-opacity=".42"/>
+  <rect x="98" y="428" width="312" height="14" rx="7" fill="#FFFFFF" fill-opacity=".12"/>
+  <rect x="580" y="396" width="370" height="14" rx="7" fill="#FFFFFF" fill-opacity=".12"/>
+  <rect x="580" y="428" width="286" height="14" rx="7" fill="#67E8F9" fill-opacity=".38"/>
+  <rect x="98" y="584" width="206" height="12" rx="6" fill="#FFFFFF" fill-opacity=".12"/>
+  <rect x="98" y="614" width="156" height="12" rx="6" fill="#67E8F9" fill-opacity=".38"/>
+  <rect x="406" y="584" width="210" height="12" rx="6" fill="#FACC15" fill-opacity=".42"/>
+  <rect x="406" y="614" width="180" height="12" rx="6" fill="#FFFFFF" fill-opacity=".12"/>
+  <rect x="714" y="584" width="238" height="12" rx="6" fill="#67E8F9" fill-opacity=".38"/>
+  <rect x="714" y="614" width="198" height="12" rx="6" fill="#FFFFFF" fill-opacity=".12"/>
+  <path d="M238 292C314 324 366 334 448 324C528 314 594 292 676 292C758 292 826 320 908 292" stroke="#67E8F9" stroke-opacity=".28" stroke-width="3"/>
+  <path d="M304 478C368 506 436 516 508 510C588 503 642 476 718 478C800 480 858 508 930 478" stroke="#FACC15" stroke-opacity=".24" stroke-width="3"/>
+</svg>
