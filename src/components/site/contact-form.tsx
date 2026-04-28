@@ -72,6 +72,7 @@ export function ContactForm() {
             name="name"
             placeholder="Your name"
             defaultValue={state.values?.name ?? ""}
+            aria-describedby="name-error"
             aria-invalid={Boolean(fieldError(state, "name"))}
             required
           />
@@ -89,6 +90,7 @@ export function ContactForm() {
             type="email"
             placeholder="you@company.com"
             defaultValue={state.values?.email ?? ""}
+            aria-describedby="email-error"
             aria-invalid={Boolean(fieldError(state, "email"))}
             required
           />
@@ -101,6 +103,7 @@ export function ContactForm() {
           name="company"
           placeholder="Company or project name"
           defaultValue={state.values?.company ?? ""}
+          aria-describedby="company-error"
           aria-invalid={Boolean(fieldError(state, "company"))}
         />
       </Field>
@@ -117,6 +120,7 @@ export function ContactForm() {
             <SelectTrigger
               id="service"
               className="h-11 w-full"
+              aria-describedby="service-error"
               aria-invalid={Boolean(fieldError(state, "service"))}
             >
               <SelectValue placeholder="Choose a focus area" />
@@ -142,6 +146,7 @@ export function ContactForm() {
             <SelectTrigger
               id="timeline"
               className="h-11 w-full"
+              aria-describedby="timeline-error"
               aria-invalid={Boolean(fieldError(state, "timeline"))}
             >
               <SelectValue placeholder="When should we start?" />
@@ -168,6 +173,7 @@ export function ContactForm() {
           name="message"
           placeholder="Tell me what is currently taking too much time, what needs to stay organized, and what a useful first win would look like."
           defaultValue={state.values?.message ?? ""}
+          aria-describedby="message-error"
           aria-invalid={Boolean(fieldError(state, "message"))}
           className="min-h-36 resize-y"
           required
@@ -211,7 +217,9 @@ function Field({
         {required ? <span className="text-signal"> *</span> : null}
       </Label>
       {children}
-      <p className="min-h-5 text-xs text-destructive">{error ?? ""}</p>
+      <p id={`${id}-error`} className="min-h-5 text-xs text-destructive">
+        {error ?? ""}
+      </p>
     </div>
   );
 }

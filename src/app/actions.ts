@@ -49,7 +49,7 @@ export async function submitContactForm(
     return {
       status: "error",
       message:
-        "The form is working, but email delivery is not configured yet. Please add the Resend environment variables in Vercel.",
+        "Your message could not be sent just now. Please try again in a few minutes.",
       values: parsed.data,
       submittedAt,
     };

@@ -257,7 +257,7 @@ function ProofSection() {
       id="proof"
       eyebrow="Outcomes"
       title="Proof without pretending: practical outcomes clients can feel."
-      description="This v1 portfolio prioritizes service results over invented testimonials or inflated metrics."
+      description="The promise stays grounded: no invented testimonials or inflated metrics, just the operating outcomes clients can expect."
     >
       <div className="grid gap-4 md:grid-cols-2">
         {proofPoints.map((point, index) => (
