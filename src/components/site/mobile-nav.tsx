@@ -4,6 +4,7 @@ import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import type { NavItem } from "@/lib/content";
+import { scheduleScrollToHash } from "@/lib/smooth-scroll";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -27,28 +28,9 @@ export function MobileNav({ items }: MobileNavProps) {
       return;
     }
 
-    const timeout = window.setTimeout(() => {
-      const target = document.querySelector<HTMLElement>(pendingHref);
-
-      if (!target) {
-        setPendingHref(null);
-        return;
-      }
-
-      const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-      const top = target.getBoundingClientRect().top + window.scrollY - 80;
-
-      window.scrollTo({
-        top,
-        behavior: reduceMotion ? "auto" : "smooth",
-      });
-      window.history.replaceState(null, "", pendingHref);
-      setPendingHref(null);
-    }, 260);
-
-    return () => window.clearTimeout(timeout);
+    return scheduleScrollToHash(pendingHref, {
+      onComplete: () => setPendingHref(null),
+    });
   }, [open, pendingHref]);
 
   function handleSectionClick(
@@ -85,7 +67,7 @@ export function MobileNav({ items }: MobileNavProps) {
               key={item.href}
               href={item.href}
               onClick={(event) => handleSectionClick(event, item.href)}
-              className="rounded-md px-3 py-3 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
+              className="cursor-pointer rounded-md border border-transparent px-3 py-3 text-sm text-muted-foreground transition hover:border-white/10 hover:bg-white/5 hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
             >
               {item.label}
             </a>

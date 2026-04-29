@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ArrowRight,
   CalendarDays,
@@ -13,6 +12,7 @@ import {
 import { Reveal } from "@/components/motion/reveal";
 import { ContactForm } from "@/components/site/contact-form";
 import { HeroVisual } from "@/components/site/hero-visual";
+import { InPageLink } from "@/components/site/in-page-link";
 import { MobileNav } from "@/components/site/mobile-nav";
 import { ScrollProgress } from "@/components/site/scroll-progress";
 import { Badge } from "@/components/ui/badge";
@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <>
       <ScrollProgress />
-      <div className="relative min-h-screen overflow-hidden">
+      <div className="relative min-h-screen overflow-x-clip">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] bg-[linear-gradient(110deg,oklch(0.82_0.15_195/0.18),transparent_32%,oklch(0.84_0.16_78/0.18)_72%,transparent)]"
@@ -65,31 +65,34 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-background/72 backdrop-blur-xl">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="#" className="flex items-center gap-3">
+        <InPageLink
+          href="#"
+          className="flex cursor-pointer items-center gap-3 rounded-md focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+        >
           <span className="flex size-9 items-center justify-center rounded-md border border-signal/35 bg-signal/10 font-mono text-sm font-semibold text-signal">
             JS
           </span>
           <span className="hidden text-sm font-medium text-foreground sm:block">
             {siteContent.role}
           </span>
-        </Link>
+        </InPageLink>
         <nav className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
-            <Link
+            <InPageLink
               key={item.href}
               href={item.href}
-              className="rounded-md px-3 py-2 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
+              className="cursor-pointer rounded-md border border-transparent px-3 py-2 text-sm text-muted-foreground transition hover:border-white/10 hover:bg-white/5 hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
             >
               {item.label}
-            </Link>
+            </InPageLink>
           ))}
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild size="sm" className="hidden gap-2 sm:flex">
-            <Link href="#contact">
+            <InPageLink href="#contact">
               <Mail className="size-4" />
               Hire Me
-            </Link>
+            </InPageLink>
           </Button>
           <MobileNav items={navItems} />
         </div>
@@ -113,16 +116,16 @@ function HeroSection() {
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg" className="gap-2">
-            <Link href="#portfolio">
+            <InPageLink href="#portfolio">
               {siteContent.primaryCta}
               <ArrowRight className="size-4" />
-            </Link>
+            </InPageLink>
           </Button>
           <Button asChild size="lg" variant="outline" className="gap-2">
-            <Link href="#contact">
+            <InPageLink href="#contact">
               {siteContent.secondaryCta}
               <ExternalLink className="size-4" />
-            </Link>
+            </InPageLink>
           </Button>
         </div>
         <div className="mt-8 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
@@ -189,7 +192,7 @@ function ServicesSection() {
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {services.map((service, index) => (
           <Reveal key={service.title} delay={index * 0.08}>
-            <Card className="h-full border-white/10 bg-card/70">
+            <Card className="h-full border-white/10 bg-card/70 hover:border-signal/25 hover:shadow-[0_16px_42px_oklch(0_0_0/0.18)]">
               <CardContent className="p-6">
                 <div className="mb-5 flex size-11 items-center justify-center rounded-md border border-signal/25 bg-signal/10 text-signal">
                   <service.icon className="size-5" />
@@ -230,7 +233,7 @@ function PortfolioSection() {
       <div className="grid gap-4 lg:grid-cols-3">
         {portfolioSamples.map((sample, index) => (
           <Reveal key={sample.title} delay={index * 0.06}>
-            <Card className="h-full border-white/10 bg-card/70">
+            <Card className="h-full border-white/10 bg-card/70 hover:border-signal/25 hover:shadow-[0_16px_42px_oklch(0_0_0/0.18)]">
               <CardContent className="flex h-full flex-col p-5">
                 <div className="mb-5 flex items-center justify-between gap-3">
                   <Badge className="border-ember/30 bg-ember/10 text-ember hover:bg-ember/15">
@@ -376,7 +379,7 @@ function PackagesSection() {
       <div className="grid gap-4 lg:grid-cols-3">
         {packageOptions.map((option, index) => (
           <Reveal key={option.name} delay={index * 0.08}>
-            <Card className="h-full border-white/10 bg-card/70">
+            <Card className="h-full border-white/10 bg-card/70 hover:border-signal/25 hover:shadow-[0_16px_42px_oklch(0_0_0/0.18)]">
               <CardContent className="p-6">
                 <h3 className="text-2xl font-semibold">{option.name}</h3>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">
@@ -415,7 +418,10 @@ function ToolsAboutSection() {
         <Reveal>
           <div className="grid gap-4 md:grid-cols-2">
             {proofPoints.map((point) => (
-              <Card key={point.title} className="border-white/10 bg-card/70">
+              <Card
+                key={point.title}
+                className="border-white/10 bg-card/70 hover:border-signal/25 hover:shadow-[0_16px_42px_oklch(0_0_0/0.18)]"
+              >
                 <CardContent className="flex h-full gap-4 p-5">
                   <div className="flex size-11 shrink-0 items-center justify-center rounded-md border border-signal/25 bg-signal/10 text-signal">
                     <point.icon className="size-5" />
@@ -462,7 +468,7 @@ function ToolsAboutSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className="px-4 py-20 sm:px-6 lg:px-8">
+    <section id="contact" className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.86fr_1.14fr]">
         <Reveal>
           <div className="sticky top-24">
@@ -498,7 +504,7 @@ function ContactSection() {
         </Reveal>
 
         <Reveal delay={0.12}>
-          <Card className="border-white/10 bg-card/80">
+          <Card className="border-white/10 bg-card/80 hover:border-signal/25 hover:shadow-[0_16px_42px_oklch(0_0_0/0.18)]">
             <CardContent className="p-5 sm:p-7">
               <ContactForm />
             </CardContent>
@@ -523,7 +529,7 @@ function SectionShell({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="px-4 py-20 sm:px-6 lg:px-8">
+    <section id={id} className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <div className="mb-10 max-w-3xl">
@@ -560,7 +566,7 @@ function SocialLinks({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Open ${link.label} profile in a new tab`}
-          className="inline-flex items-center gap-1 rounded-md border border-white/10 bg-white/[0.035] px-3 py-2 text-sm text-muted-foreground transition hover:border-signal/30 hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="inline-flex cursor-pointer items-center gap-1 rounded-md border border-white/10 bg-white/[0.035] px-3 py-2 text-sm text-muted-foreground transition hover:-translate-y-0.5 hover:border-signal/30 hover:text-foreground hover:shadow-[0_10px_28px_oklch(0_0_0/0.18)] focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           {link.label}
           <ExternalLink className="size-3.5" aria-hidden="true" />
@@ -578,13 +584,13 @@ function SiteFooter() {
           {siteContent.name} | {siteContent.role}
         </p>
         <div className="flex flex-wrap items-center gap-3">
-          <Link
+          <InPageLink
             href="#contact"
-            className="inline-flex items-center gap-1 hover:text-foreground"
+            className="inline-flex cursor-pointer items-center gap-1 rounded-md transition hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             Hire Me on Upwork
             <ExternalLink className="size-3.5" />
-          </Link>
+          </InPageLink>
           <span
             aria-hidden="true"
             className="hidden h-4 w-px bg-white/15 sm:block"
