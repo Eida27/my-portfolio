@@ -19,7 +19,7 @@ export async function sendContactEmail(payload: ContactPayload) {
     from,
     to,
     replyTo: payload.email,
-    subject: `Portfolio inquiry: ${payload.name}${companyLabel}`,
+    subject: `Video editing inquiry: ${payload.name}${companyLabel}`,
     react: <ContactNotificationEmail payload={payload} />,
   });
 

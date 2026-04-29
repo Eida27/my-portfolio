@@ -56,7 +56,7 @@ export function ContactNotificationEmail({
   return (
     <Html>
       <Head />
-      <Preview>New portfolio inquiry from {payload.name}</Preview>
+      <Preview>New video editing inquiry from {payload.name}</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={panel}>
@@ -68,7 +68,7 @@ export function ContactNotificationEmail({
                 margin: "0 0 20px",
               }}
             >
-              New portfolio inquiry
+              New video editing inquiry
             </Heading>
             <Text style={label}>Name</Text>
             <Text style={value}>{payload.name}</Text>

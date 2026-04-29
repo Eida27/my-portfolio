@@ -123,7 +123,7 @@ export function ContactForm() {
               aria-describedby="service-error"
               aria-invalid={Boolean(fieldError(state, "service"))}
             >
-              <SelectValue placeholder="Choose a focus area" />
+              <SelectValue placeholder="Choose a content focus" />
             </SelectTrigger>
             <SelectContent>
               {serviceOptions.map((service) => (
@@ -149,7 +149,7 @@ export function ContactForm() {
               aria-describedby="timeline-error"
               aria-invalid={Boolean(fieldError(state, "timeline"))}
             >
-              <SelectValue placeholder="When should we start?" />
+              <SelectValue placeholder="When do you need support?" />
             </SelectTrigger>
             <SelectContent>
               {timelineOptions.map((timeline) => (
@@ -164,14 +164,14 @@ export function ContactForm() {
 
       <Field
         id="message"
-        label="What needs support?"
+        label="What video or social content needs support?"
         error={fieldError(state, "message")}
         required
       >
         <Textarea
           id="message"
           name="message"
-          placeholder="Tell me what is currently taking too much time, what needs to stay organized, and what a useful first win would look like."
+          placeholder="Tell me what type of footage you have, which platforms you need, the editing style you want, and whether you also need titles, captions, keywords, or hashtags."
           defaultValue={state.values?.message ?? ""}
           aria-describedby="message-error"
           aria-invalid={Boolean(fieldError(state, "message"))}
@@ -191,7 +191,7 @@ export function ContactForm() {
         className="w-full justify-center gap-2 sm:w-fit"
       >
         <Send className="size-4" />
-        {pending ? "Sending..." : "Send project brief"}
+        {pending ? "Sending..." : "Send content brief"}
       </Button>
     </form>
   );

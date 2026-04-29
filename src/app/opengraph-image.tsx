@@ -72,8 +72,8 @@ export default function Image() {
               color: "#b8c0cc",
             }}
           >
-            Admin support, client communication, and operations coordination for
-            busy teams.
+            Short-form edits, long-form YouTube support, captions, titles,
+            keywords, hashtags, and social content preparation.
           </div>
         </div>
       </div>

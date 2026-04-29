@@ -1,13 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  BriefcaseBusiness,
   CalendarDays,
   Check,
   ExternalLink,
   Mail,
   MapPin,
+  Play,
+  Sparkles,
 } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
@@ -20,7 +20,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
+  comparisons,
+  heroHighlights,
   navItems,
+  packageOptions,
+  portfolioSamples,
   processSteps,
   proofPoints,
   services,
@@ -37,16 +41,18 @@ export default function Home() {
       <div className="relative min-h-screen overflow-hidden">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-[42rem] bg-[linear-gradient(110deg,oklch(0.82_0.15_195/0.18),transparent_36%,oklch(0.84_0.16_78/0.16)_72%,transparent)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] bg-[linear-gradient(110deg,oklch(0.82_0.15_195/0.18),transparent_32%,oklch(0.84_0.16_78/0.18)_72%,transparent)]"
         />
         <SiteHeader />
         <main>
           <HeroSection />
           <TrustStrip />
           <ServicesSection />
-          <ProcessSection />
-          <ProofSection />
-          <ToolsSection />
+          <PortfolioSection />
+          <BeforeAfterSection />
+          <WorkflowSection />
+          <PackagesSection />
+          <ToolsAboutSection />
           <ContactSection />
         </main>
         <SiteFooter />
@@ -64,7 +70,7 @@ function SiteHeader() {
             JS
           </span>
           <span className="hidden text-sm font-medium text-foreground sm:block">
-            {siteContent.name}
+            {siteContent.role}
           </span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
@@ -82,7 +88,7 @@ function SiteHeader() {
           <Button asChild size="sm" className="hidden gap-2 sm:flex">
             <Link href="#contact">
               <Mail className="size-4" />
-              Contact
+              Hire Me
             </Link>
           </Button>
           <MobileNav items={navItems} />
@@ -94,7 +100,7 @@ function SiteHeader() {
 
 function HeroSection() {
   return (
-    <section className="relative mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8">
+    <section className="relative mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[0.96fr_1.04fr] lg:px-8">
       <div className="relative z-10">
         <Badge className="border-signal/30 bg-signal/10 text-signal hover:bg-signal/15">
           {siteContent.availability}
@@ -107,13 +113,16 @@ function HeroSection() {
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg" className="gap-2">
-            <Link href="#contact">
+            <Link href="#portfolio">
               {siteContent.primaryCta}
               <ArrowRight className="size-4" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="gap-2">
-            <Link href="#services">{siteContent.secondaryCta}</Link>
+            <Link href="#contact">
+              {siteContent.secondaryCta}
+              <ExternalLink className="size-4" />
+            </Link>
           </Button>
         </div>
         <div className="mt-8 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
@@ -123,25 +132,15 @@ function HeroSection() {
           <SignalItem icon={<CalendarDays className="size-4" />}>
             {siteContent.responsePromise}
           </SignalItem>
-          <SignalItem icon={<BriefcaseBusiness className="size-4" />}>
-            VA, admin, ops coordination
+          <SignalItem icon={<Sparkles className="size-4" />}>
+            {siteContent.supportLine}
           </SignalItem>
         </div>
       </div>
 
       <div className="relative">
         <div className="absolute inset-0 -z-10 translate-y-8 border border-signal/15 bg-signal/5 blur-2xl" />
-        <div className="relative">
-          <Image
-            src="/operations-command-center.svg"
-            alt="Futuristic operations command center dashboard"
-            width={1080}
-            height={760}
-            priority
-            className="absolute inset-0 h-full w-full object-cover opacity-35"
-          />
-          <HeroVisual />
-        </div>
+        <HeroVisual />
       </div>
     </section>
   );
@@ -184,10 +183,10 @@ function ServicesSection() {
     <SectionShell
       id="services"
       eyebrow="Services"
-      title="High-trust support for the work that must not slip."
-      description="The focus is simple: remove operational drag, protect attention, and keep client-facing work polished."
+      title="Editing and social media support clients can hire for."
+      description="Each service is shaped around the work creators usually need most: clean edits, stronger post packaging, and easier publishing."
     >
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {services.map((service, index) => (
           <Reveal key={service.title} delay={index * 0.08}>
             <Card className="h-full border-white/10 bg-card/70">
@@ -220,21 +219,135 @@ function ServicesSection() {
   );
 }
 
-function ProcessSection() {
+function PortfolioSection() {
   return (
     <SectionShell
-      id="process"
-      eyebrow="Process"
-      title="A lean working rhythm from first call to ongoing support."
-      description="Clear ownership, concise updates, and practical systems keep the partnership low-friction."
+      id="portfolio"
+      eyebrow="Portfolio"
+      title="Sample work built around real client needs."
+      description="These are honest sample/demo cases for v1. They show the kind of editing, optimization, and content support I can provide without inventing client results."
     >
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 lg:grid-cols-3">
+        {portfolioSamples.map((sample, index) => (
+          <Reveal key={sample.title} delay={index * 0.06}>
+            <Card className="h-full border-white/10 bg-card/70">
+              <CardContent className="flex h-full flex-col p-5">
+                <div className="mb-5 flex items-center justify-between gap-3">
+                  <Badge className="border-ember/30 bg-ember/10 text-ember hover:bg-ember/15">
+                    {sample.label}
+                  </Badge>
+                  <Play className="size-4 text-signal" />
+                </div>
+                <h3 className="text-xl font-semibold leading-tight">
+                  {sample.title}
+                </h3>
+                <dl className="mt-5 grid gap-4 text-sm">
+                  <PortfolioDetail label="Service" value={sample.service} />
+                  <PortfolioDetail
+                    label="Client type"
+                    value={sample.clientType}
+                  />
+                  <PortfolioDetail label="Goal" value={sample.goal} />
+                  <PortfolioDetail label="My role" value={sample.role} />
+                  <PortfolioDetail label="Tools" value={sample.tools} />
+                  <PortfolioDetail label="Result" value={sample.result} />
+                </dl>
+              </CardContent>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+    </SectionShell>
+  );
+}
+
+function PortfolioDetail({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  return (
+    <div>
+      <dt className="font-mono text-xs uppercase text-muted-foreground">
+        {label}
+      </dt>
+      <dd className="mt-1 leading-6 text-foreground/88">{value}</dd>
+    </div>
+  );
+}
+
+function BeforeAfterSection() {
+  return (
+    <SectionShell
+      id="before-after"
+      eyebrow="Before / After"
+      title="Small packaging changes that make content clearer."
+      description="Editing is only part of the job. Strong titles, captions, hashtags, and posting plans help each piece of content make sense faster."
+    >
+      <div className="grid gap-4 md:grid-cols-2">
+        {comparisons.map((comparison, index) => (
+          <Reveal key={comparison.title} delay={index * 0.07}>
+            <div className="h-full rounded-lg border border-white/10 bg-white/[0.03] p-5">
+              <h3 className="text-lg font-semibold">{comparison.title}</h3>
+              <div className="mt-5 grid gap-3">
+                <ComparisonBlock label="Before" value={comparison.before} />
+                <ComparisonBlock label="After" value={comparison.after} strong />
+              </div>
+              <p className="mt-5 text-sm leading-6 text-muted-foreground">
+                {comparison.why}
+              </p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </SectionShell>
+  );
+}
+
+function ComparisonBlock({
+  label,
+  value,
+  strong,
+}: {
+  label: string;
+  value: string;
+  strong?: boolean;
+}) {
+  return (
+    <div className="rounded-md border border-white/10 bg-background/70 p-4">
+      <p className="font-mono text-xs uppercase text-muted-foreground">
+        {label}
+      </p>
+      <p
+        className={
+          strong
+            ? "mt-2 text-sm font-medium leading-6 text-signal"
+            : "mt-2 text-sm leading-6 text-muted-foreground"
+        }
+      >
+        {value}
+      </p>
+    </div>
+  );
+}
+
+function WorkflowSection() {
+  return (
+    <SectionShell
+      id="workflow"
+      eyebrow="Workflow"
+      title="A clear process from raw footage to final post assets."
+      description="The handoff stays simple so clients know what to send, when to review, and what they will receive."
+    >
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {processSteps.map((step, index) => (
-          <Reveal key={step.title} delay={index * 0.07}>
+          <Reveal key={step.title} delay={index * 0.06}>
             <div className="relative h-full rounded-lg border border-white/10 bg-white/[0.03] p-5">
               <div className="mb-6 flex items-center justify-between">
                 <span className="font-mono text-sm text-muted-foreground">
-                  0{index + 1}
+                  {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="flex size-10 items-center justify-center rounded-md border border-ember/25 bg-ember/10 text-ember">
                   <step.icon className="size-5" />
@@ -252,28 +365,35 @@ function ProcessSection() {
   );
 }
 
-function ProofSection() {
+function PackagesSection() {
   return (
     <SectionShell
-      id="proof"
-      eyebrow="Outcomes"
-      title="Proof without pretending: practical outcomes clients can feel."
-      description="The promise stays grounded: no invented testimonials or inflated metrics, just the operating outcomes clients can expect."
+      id="packages"
+      eyebrow="Packages"
+      title="Simple starting points for Upwork projects."
+      description="Packages keep the first conversation concrete while still leaving room to adjust scope to the footage, platform, and schedule."
     >
-      <div className="grid gap-4 md:grid-cols-2">
-        {proofPoints.map((point, index) => (
-          <Reveal key={point.title} delay={index * 0.08}>
+      <div className="grid gap-4 lg:grid-cols-3">
+        {packageOptions.map((option, index) => (
+          <Reveal key={option.name} delay={index * 0.08}>
             <Card className="h-full border-white/10 bg-card/70">
-              <CardContent className="flex h-full gap-4 p-5">
-                <div className="flex size-11 shrink-0 items-center justify-center rounded-md border border-signal/25 bg-signal/10 text-signal">
-                  <point.icon className="size-5" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold">{point.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {point.description}
-                  </p>
-                </div>
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold">{option.name}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                  {option.bestFor}
+                </p>
+                <Separator className="my-5 bg-white/10" />
+                <ul className="grid gap-3">
+                  {option.includes.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-2 text-sm text-muted-foreground"
+                    >
+                      <Check className="mt-0.5 size-4 shrink-0 text-ember" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
           </Reveal>
@@ -283,26 +403,59 @@ function ProofSection() {
   );
 }
 
-function ToolsSection() {
+function ToolsAboutSection() {
   return (
     <SectionShell
       id="tools"
-      eyebrow="Tool fluency"
-      title="Comfortable across the systems modern teams already use."
-      description="The stack stays practical: communication, docs, scheduling, project tracking, light automation, and client operations."
+      eyebrow="About"
+      title="Clean editing, clear messaging, and practical content support."
+      description={siteContent.about}
     >
-      <Reveal>
-        <div className="flex flex-wrap gap-3">
-          {tools.map((tool) => (
-            <span
-              key={tool}
-              className="rounded-md border border-white/10 bg-white/[0.035] px-3 py-2 text-sm text-muted-foreground transition hover:border-signal/30 hover:text-foreground"
-            >
-              {tool}
-            </span>
-          ))}
-        </div>
-      </Reveal>
+      <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+        <Reveal>
+          <div className="grid gap-4 md:grid-cols-2">
+            {proofPoints.map((point) => (
+              <Card key={point.title} className="border-white/10 bg-card/70">
+                <CardContent className="flex h-full gap-4 p-5">
+                  <div className="flex size-11 shrink-0 items-center justify-center rounded-md border border-signal/25 bg-signal/10 text-signal">
+                    <point.icon className="size-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold">{point.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                      {point.description}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <div className="h-full rounded-lg border border-white/10 bg-white/[0.03] p-5">
+            <p className="font-mono text-xs uppercase text-muted-foreground">
+              Tools I can support
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {tools.map((tool) => (
+                <span
+                  key={tool}
+                  className="rounded-md border border-white/10 bg-background/60 px-3 py-2 text-sm text-muted-foreground transition hover:border-signal/30 hover:text-foreground"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+            <div className="mt-8 rounded-md border border-signal/20 bg-signal/10 p-4">
+              <p className="text-sm font-medium text-signal">
+                Best fit: creators and small teams who need consistent help
+                preparing content for multiple social platforms.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+      </div>
     </SectionShell>
   );
 }
@@ -314,10 +467,10 @@ function ContactSection() {
         <Reveal>
           <div className="sticky top-24">
             <Badge className="border-ember/30 bg-ember/10 text-ember hover:bg-ember/15">
-              Contact
+              Hire Me on Upwork
             </Badge>
             <h2 className="mt-5 text-balance text-4xl font-semibold leading-tight sm:text-5xl">
-              Bring the messy workflow. I will help make it usable.
+              Need help editing videos or managing social media content?
             </h2>
             <p className="mt-5 text-pretty text-base leading-7 text-muted-foreground">
               {siteContent.contactIntro}
@@ -326,28 +479,19 @@ function ContactSection() {
               <p className="font-mono text-xs uppercase text-muted-foreground">
                 Connect
               </p>
-              <SocialLinks
-                links={siteContent.socialLinks}
-                className="mt-4"
-              />
+              <SocialLinks links={siteContent.socialLinks} className="mt-4" />
             </div>
             <div className="mt-8 rounded-lg border border-white/10 bg-white/[0.03] p-5">
               <p className="font-mono text-xs uppercase text-muted-foreground">
                 Good first projects
               </p>
               <ul className="mt-4 grid gap-3 text-sm text-muted-foreground">
-                <li className="flex gap-2">
-                  <Check className="mt-0.5 size-4 text-ember" />
-                  Inbox and calendar reset
-                </li>
-                <li className="flex gap-2">
-                  <Check className="mt-0.5 size-4 text-ember" />
-                  Weekly admin and follow-up cadence
-                </li>
-                <li className="flex gap-2">
-                  <Check className="mt-0.5 size-4 text-ember" />
-                  Client ops tracker and SOP cleanup
-                </li>
+                {heroHighlights.map((highlight) => (
+                  <li key={highlight} className="flex gap-2">
+                    <Check className="mt-0.5 size-4 text-ember" />
+                    {highlight}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -438,7 +582,7 @@ function SiteFooter() {
             href="#contact"
             className="inline-flex items-center gap-1 hover:text-foreground"
           >
-            Start a project
+            Hire Me on Upwork
             <ExternalLink className="size-3.5" />
           </Link>
           <span
