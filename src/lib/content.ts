@@ -25,6 +25,11 @@ export type Service = {
   outcomes: string[];
 };
 
+export type SocialLink = {
+  label: string;
+  href: string;
+};
+
 export const siteContent = {
   name: "Joshua Sumanghid",
   role: "Freelance Virtual Assistant",
@@ -38,7 +43,13 @@ export const siteContent = {
   responsePromise: "Replies within 1 business day",
   contactIntro:
     "Share what is slowing you down. I will reply with the next best step, the information I need, and where I can take ownership.",
-  socialLinks: [] as { label: string; href: string }[],
+  socialLinks: [
+    { label: "Facebook", href: "https://www.facebook.com/share/14ieRUJA2yu" },
+    { label: "Instagram", href: "https://www.instagram.com/eida_manhwa1018" },
+    { label: "TikTok", href: "https://www.tiktok.com/@eida_1018" },
+    { label: "YouTube", href: "https://www.youtube.com/@eida1018" },
+    { label: "Twitter/X", href: "https://x.com/EidaTempest" },
+  ] satisfies SocialLink[],
 };
 
 export const navItems: NavItem[] = [

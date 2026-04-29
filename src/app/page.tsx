@@ -25,6 +25,7 @@ import {
   proofPoints,
   services,
   siteContent,
+  type SocialLink,
   tools,
   trustSignals,
 } from "@/lib/content";
@@ -321,6 +322,15 @@ function ContactSection() {
             <p className="mt-5 text-pretty text-base leading-7 text-muted-foreground">
               {siteContent.contactIntro}
             </p>
+            <div className="mt-6 rounded-lg border border-white/10 bg-white/[0.03] p-5">
+              <p className="font-mono text-xs uppercase text-muted-foreground">
+                Connect
+              </p>
+              <SocialLinks
+                links={siteContent.socialLinks}
+                className="mt-4"
+              />
+            </div>
             <div className="mt-8 rounded-lg border border-white/10 bg-white/[0.03] p-5">
               <p className="font-mono text-xs uppercase text-muted-foreground">
                 Good first projects
@@ -390,18 +400,52 @@ function SectionShell({
   );
 }
 
+function SocialLinks({
+  links,
+  className = "",
+}: {
+  links: SocialLink[];
+  className?: string;
+}) {
+  return (
+    <div className={`flex flex-wrap gap-3 ${className}`}>
+      {links.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${link.label} profile in a new tab`}
+          className="inline-flex items-center gap-1 rounded-md border border-white/10 bg-white/[0.035] px-3 py-2 text-sm text-muted-foreground transition hover:border-signal/30 hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+        >
+          {link.label}
+          <ExternalLink className="size-3.5" aria-hidden="true" />
+        </a>
+      ))}
+    </div>
+  );
+}
+
 function SiteFooter() {
   return (
     <footer className="border-t border-white/10 px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-muted-foreground lg:flex-row lg:items-center lg:justify-between">
         <p>
           {siteContent.name} | {siteContent.role}
         </p>
-        <div className="flex flex-wrap gap-3">
-          <Link href="#contact" className="inline-flex items-center gap-1 hover:text-foreground">
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href="#contact"
+            className="inline-flex items-center gap-1 hover:text-foreground"
+          >
             Start a project
             <ExternalLink className="size-3.5" />
           </Link>
+          <span
+            aria-hidden="true"
+            className="hidden h-4 w-px bg-white/15 sm:block"
+          />
+          <SocialLinks links={siteContent.socialLinks} />
         </div>
       </div>
     </footer>
