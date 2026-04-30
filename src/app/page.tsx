@@ -8,6 +8,7 @@ import {
   Play,
   Sparkles,
 } from "lucide-react";
+import Image from "next/image";
 
 import { Reveal } from "@/components/motion/reveal";
 import { ContactForm } from "@/components/site/contact-form";
@@ -21,6 +22,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
   comparisons,
+  featuredVideoLinks,
   heroHighlights,
   navItems,
   packageOptions,
@@ -29,9 +31,13 @@ import {
   proofPoints,
   services,
   siteContent,
+  socialProofGroups,
+  type FeaturedVideoLink,
+  type ProofImage,
   type SocialLink,
   tools,
   trustSignals,
+  workProofs,
 } from "@/lib/content";
 
 export default function Home() {
@@ -49,6 +55,7 @@ export default function Home() {
           <TrustStrip />
           <ServicesSection />
           <PortfolioSection />
+          <SocialProofSection />
           <BeforeAfterSection />
           <WorkflowSection />
           <PackagesSection />
@@ -227,8 +234,8 @@ function PortfolioSection() {
     <SectionShell
       id="portfolio"
       eyebrow="Portfolio"
-      title="Sample work built around real client needs."
-      description="These are honest sample/demo cases for v1. They show the kind of editing, optimization, and content support I can provide without inventing client results."
+      title="Proof, video links, and samples built around real content needs."
+      description="This section combines past work proof, featured social video links, and honest sample cases that show the kind of editing, optimization, and content support I can provide."
     >
       <div className="grid gap-4 lg:grid-cols-3">
         {portfolioSamples.map((sample, index) => (
@@ -260,7 +267,158 @@ function PortfolioSection() {
           </Reveal>
         ))}
       </div>
+
+      <div className="mt-12">
+        <ProofSectionHeading
+          eyebrow="Past Work Proof"
+          title="Webcomics campaign screenshots"
+          description="Screenshots from previous campaign work, kept as visual proof without adding unsupported performance claims."
+        />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {workProofs.map((proof, index) => (
+            <Reveal key={proof.src} delay={index * 0.06}>
+              <ProofImageCard image={proof} />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-12">
+        <ProofSectionHeading
+          eyebrow="Featured Videos"
+          title="Social video placeholders"
+          description="Reliable link cards for the TikTok, YouTube, Instagram, and Facebook video/profile URLs."
+        />
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          {featuredVideoLinks.map((video, index) => (
+            <Reveal key={video.href} delay={index * 0.05}>
+              <FeaturedVideoCard video={video} />
+            </Reveal>
+          ))}
+        </div>
+      </div>
     </SectionShell>
+  );
+}
+
+function SocialProofSection() {
+  return (
+    <SectionShell
+      id="social-proof"
+      eyebrow="Social Proof"
+      title="Audience screenshots from active social accounts."
+      description="These screenshots show audience proof across the platforms I create, edit, and optimize content for, without claiming exact follower counts in text."
+    >
+      <div className="grid gap-10">
+        {socialProofGroups.map((group, groupIndex) => (
+          <Reveal key={group.platform} delay={groupIndex * 0.06}>
+            <div>
+              <div className="mb-4 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+                <div>
+                  <Badge className="border-ember/30 bg-ember/10 text-ember hover:bg-ember/15">
+                    {group.platform}
+                  </Badge>
+                  <h3 className="mt-3 text-2xl font-semibold">
+                    {group.platform} audience proof
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
+                    {group.summary}
+                  </p>
+                </div>
+                <p className="font-mono text-xs uppercase text-muted-foreground">
+                  {group.screenshots.length}{" "}
+                  {group.screenshots.length === 1 ? "screenshot" : "screenshots"}
+                </p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                {group.screenshots.map((screenshot) => (
+                  <ProofImageCard key={screenshot.src} image={screenshot} />
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </SectionShell>
+  );
+}
+
+function ProofSectionHeading({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="mb-5 max-w-3xl">
+      <p className="font-mono text-xs uppercase text-signal">{eyebrow}</p>
+      <h3 className="mt-2 text-2xl font-semibold">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+        {description}
+      </p>
+    </div>
+  );
+}
+
+function ProofImageCard({ image }: { image: ProofImage }) {
+  return (
+    <Card className="h-full border-white/10 bg-card/70 p-0 hover:border-signal/25 hover:shadow-[0_16px_42px_oklch(0_0_0/0.18)]">
+      <CardContent className="flex h-full flex-col p-0">
+        <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
+          <Badge className="border-signal/30 bg-signal/10 text-signal hover:bg-signal/15">
+            {image.label}
+          </Badge>
+          <Play className="size-4 shrink-0 text-signal" aria-hidden="true" />
+        </div>
+        <figure className="flex h-full flex-col p-3">
+          <div className="mx-auto flex aspect-[9/16] max-h-[34rem] w-full max-w-sm items-center justify-center overflow-hidden rounded-md border border-white/10 bg-background/70">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <figcaption className="mt-3 text-sm font-medium leading-6">
+            {image.title}
+          </figcaption>
+        </figure>
+      </CardContent>
+    </Card>
+  );
+}
+
+function FeaturedVideoCard({ video }: { video: FeaturedVideoLink }) {
+  return (
+    <a
+      href={video.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${video.action}: ${video.title}`}
+      className="group flex h-full min-h-48 flex-col justify-between rounded-lg border border-white/10 bg-card/70 p-5 text-card-foreground transition hover:-translate-y-0.5 hover:border-signal/30 hover:shadow-[0_16px_42px_oklch(0_0_0/0.18)] focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+    >
+      <span className="flex items-center justify-between gap-3">
+        <Badge className="border-ember/30 bg-ember/10 text-ember hover:bg-ember/15">
+          {video.platform}
+        </Badge>
+        <ExternalLink
+          className="size-4 shrink-0 text-muted-foreground transition group-hover:text-signal"
+          aria-hidden="true"
+        />
+      </span>
+      <span className="mt-6 block text-lg font-semibold leading-tight">
+        {video.title}
+      </span>
+      <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-signal">
+        {video.action}
+        <ArrowRight className="size-4" aria-hidden="true" />
+      </span>
+    </a>
   );
 }
 

@@ -61,6 +61,28 @@ export type SocialLink = {
   href: string;
 };
 
+export type ProofImage = {
+  title: string;
+  label: string;
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+export type FeaturedVideoLink = {
+  platform: string;
+  title: string;
+  href: string;
+  action: string;
+};
+
+export type SocialProofGroup = {
+  platform: string;
+  summary: string;
+  screenshots: ProofImage[];
+};
+
 export const siteContent = {
   name: "Joshua Sumanghid",
   role: "Video Editor & Social Media SEO Assistant",
@@ -89,6 +111,7 @@ export const siteContent = {
 export const navItems: NavItem[] = [
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
+  { label: "Proof", href: "#social-proof" },
   { label: "Workflow", href: "#workflow" },
   { label: "Packages", href: "#packages" },
   { label: "Contact", href: "#contact" },
@@ -229,6 +252,141 @@ export const portfolioSamples: PortfolioSample[] = [
     tools: "Premiere Pro, Canva",
     result:
       "Outlined a repeatable repurposing workflow for turning long-form content into mobile-first clips.",
+  },
+];
+
+export const workProofs: ProofImage[] = [
+  {
+    title: "Webcomics campaign proof 01",
+    label: "Past work proof",
+    src: "/assets/work-proofs/webcomics_campaign01.jpg",
+    alt: "Webcomics campaign screenshot showing past social media work proof.",
+    width: 1080,
+    height: 2436,
+  },
+  {
+    title: "Webcomics campaign proof 02",
+    label: "Past work proof",
+    src: "/assets/work-proofs/webcomics_campaign02.jpg",
+    alt: "Second webcomics campaign screenshot showing past social media work proof.",
+    width: 1080,
+    height: 2436,
+  },
+];
+
+export const featuredVideoLinks: FeaturedVideoLink[] = [
+  {
+    platform: "Instagram",
+    title: "Eida Manhwa Instagram profile",
+    href: "https://www.instagram.com/eida_manhwa1018?igsh=Z2tsYTViazgxNmNu",
+    action: "View profile",
+  },
+  {
+    platform: "TikTok",
+    title: "TikTok short-form video sample",
+    href: "https://vt.tiktok.com/ZS9fdhAjf/",
+    action: "Watch video",
+  },
+  {
+    platform: "YouTube Shorts",
+    title: "YouTube Shorts video sample",
+    href: "https://youtube.com/shorts/Q-VwidU7kU8?si=K1Ti6B54BOAZhr2X",
+    action: "Watch short",
+  },
+  {
+    platform: "Facebook Reels",
+    title: "Facebook Reel video sample",
+    href: "https://www.facebook.com/share/r/1Azv6Cd3NL/",
+    action: "Watch reel",
+  },
+  {
+    platform: "YouTube",
+    title: "YouTube video sample",
+    href: "https://youtu.be/WfuADENW3rg?si=kMGOkSfaxOiWU2VD",
+    action: "Watch video",
+  },
+];
+
+export const socialProofGroups: SocialProofGroup[] = [
+  {
+    platform: "YouTube",
+    summary: "Channel screenshots showing existing audience proof.",
+    screenshots: [
+      {
+        title: "YouTube audience proof 01",
+        label: "YouTube",
+        src: "/assets/social-proof/youtube01.jpg",
+        alt: "YouTube account screenshot showing audience proof.",
+        width: 1080,
+        height: 2436,
+      },
+      {
+        title: "YouTube audience proof 02",
+        label: "YouTube",
+        src: "/assets/social-proof/youtube02.jpg",
+        alt: "Second YouTube account screenshot showing audience proof.",
+        width: 1080,
+        height: 2436,
+      },
+    ],
+  },
+  {
+    platform: "TikTok",
+    summary: "TikTok screenshots showing existing audience proof.",
+    screenshots: [
+      {
+        title: "TikTok audience proof 01",
+        label: "TikTok",
+        src: "/assets/social-proof/tiktok01.jpg",
+        alt: "TikTok account screenshot showing audience proof.",
+        width: 1080,
+        height: 2436,
+      },
+      {
+        title: "TikTok audience proof 02",
+        label: "TikTok",
+        src: "/assets/social-proof/tiktok02.jpg",
+        alt: "Second TikTok account screenshot showing audience proof.",
+        width: 1080,
+        height: 2436,
+      },
+    ],
+  },
+  {
+    platform: "Instagram",
+    summary: "Instagram screenshots showing existing audience proof.",
+    screenshots: [
+      {
+        title: "Instagram audience proof 01",
+        label: "Instagram",
+        src: "/assets/social-proof/instagram01.jpg",
+        alt: "Instagram account screenshot showing audience proof.",
+        width: 1080,
+        height: 2436,
+      },
+      {
+        title: "Instagram audience proof 02",
+        label: "Instagram",
+        src: "/assets/social-proof/instagram02.jpg",
+        alt: "Second Instagram account screenshot showing audience proof.",
+        width: 1080,
+        height: 2436,
+      },
+    ],
+  },
+  {
+    platform: "Facebook",
+    summary: "Facebook screenshot showing existing audience proof.",
+    screenshots: [
+      {
+        title: "Facebook audience proof 01",
+        label: "Facebook",
+        src: "/assets/social-proof/facebook01.jpg",
+        alt: "Facebook account screenshot showing audience proof.",
+        width: 1080,
+        height: 2436,
+      },
+    ],
   },
 ];
 
