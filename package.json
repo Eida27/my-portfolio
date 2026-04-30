@@ -5,10 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:deploy": "opennextjs-cloudflare deploy -- --keep-vars",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "1.19.4",
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.0.8",
     "@vercel/analytics": "^2.0.1",
@@ -38,6 +42,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "4.86.0"
   }
 }
