@@ -84,7 +84,7 @@ export type SocialProofGroup = {
 };
 
 export const siteContent = {
-  name: "Joshua Sumanghid",
+  name: "Pete Joshua Cabaluna",
   role: "Video Editor & Social Media SEO Assistant",
   location: "Philippines-based, serving creators and brands worldwide",
   availability: "Open for Upwork video and social content projects",
@@ -98,7 +98,7 @@ export const siteContent = {
   contactIntro:
     "Need help editing videos or preparing social media posts? Share the footage type, platform, editing style, and timeline. I will reply with the next best step and what I need to begin.",
   about:
-    "Hi, I'm Joshua. I help creators and small businesses save time by editing videos and preparing social media content for posting. My focus is clean pacing, clear messaging, searchable titles, and relevant hashtags that match the content.",
+    "Hi, I'm Pete Joshua Cabaluna. I help creators and small businesses save time by editing videos and preparing social media content for posting. My focus is clean pacing, clear messaging, searchable titles, and relevant hashtags that match the content.",
   socialLinks: [
     { label: "Facebook", href: "https://www.facebook.com/share/14ieRUJA2yu" },
     { label: "Instagram", href: "https://www.instagram.com/eida_manhwa1018" },
